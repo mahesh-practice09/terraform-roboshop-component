@@ -40,3 +40,7 @@ variable "health_check_path" {
 variable "rule_priority" {
   
 }
+
+variable "app_version" {
+  default = "v3"
+}
