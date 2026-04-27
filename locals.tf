@@ -8,8 +8,8 @@ locals {
     listener_arn = var.component == "frontend" ? local.frontend_listener : local.backend_listener
     port_number =  var.component == "frontend" ?  "80": "8080"
     frontend_header = "${var.component}-${var.environment}.${var.domain_name}"
-    backend_header = "${var.component}.backend-${var.environment}-alb.${var.domain_name}"
-    host_header = var.component == "frontend" ? "${var.component}-${var.environment}.${var.domain_name}" :  "${var.component}.backend-${var.environment}-alb.${var.domain_name}"
+    backend_header = "${var.component}.backend-alb-${var.environment}.${var.domain_name}"
+    host_header = var.component == "frontend" ? local.frontend_header :  local.backend_header
     environment = "sbx"
     common_tags = {
         Project = var.Project
